@@ -87,7 +87,7 @@ def extract_stream_with_yt_dlp(url: str, cookiefile: Optional[str] = None, timeo
         "no_warnings": True,
         "skip_download": True,
         "dump_single_json": True,
-        "format": "best[ext=m3u8]",
+        "format": "best[ext=m3u8]/best",
         "socket_timeout": timeout,
     }
 
