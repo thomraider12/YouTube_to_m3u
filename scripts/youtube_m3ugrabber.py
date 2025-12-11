@@ -118,66 +118,41 @@ def try_extract_via_bs4(text: str, base_url: Optional[str] = None) -> Optional[s
 
 def grab_m3u8(session: requests.Session, url: str, timeout: int = 15) -> str:
     """
-    Tentativa segura de obter um link .m3u8 a partir de uma URL.
-    Retorna o link .m3u8 encontrado ou o FALLBACK_M3U se falhar.
+    Tentativa directa e agressiva de apanhar .m3u8 em QUALQUER parte da página.
     """
     url = url.strip()
     if not url:
         return FALLBACK_M3U
 
-    parsed = urlparse(url)
-    base = f"{parsed.scheme}://{parsed.netloc}" if parsed.scheme and parsed.netloc else None
-
     try:
         r = session.get(url, timeout=timeout, allow_redirects=True)
         text = r.text
-    except Exception as e:
-        logging.debug("Erro ao GET %s : %s", url, e)
-        # última tentativa: usar curl via sistema (apenas se existir) — mas evitamos por segurança
+    except Exception:
         return FALLBACK_M3U
 
-    # procurar por .m3u8
-    link = find_m3u8_in_text(text, base_url=url)
-    if link:
-        return link
+    # 1) Procurar strings que terminem exactamente em .m3u8
+    matches = re.findall(r'https?://[^\s"\'<>#]+?\.m3u8', text)
+    if matches:
+        return matches[0]
 
-    # tentar com bs4
-    link = try_extract_via_bs4(text, base_url=url)
-    if link:
-        return link
+    # 2) Procurar cadeia maior e depois extrair a parte .m3u8
+    idx = text.find('.m3u8')
+    if idx != -1:
+        start = max(0, idx - 300)
+        window = text[start:idx + 5]
+        m2 = re.search(r'https?://[^\s"\'<>#]+', window)
+        if m2 and m2.group(0).endswith('.m3u8'):
+            return m2.group(0)
 
-    # procurar todos os URLs e ver se algum termina em .m3u8 depois de juntar possibilmente
-    all_urls = SIMPLE_URL_RE.findall(text)
-    for candidate in all_urls:
-        if candidate.lower().endswith('.m3u8'):
-            # normalizar
-            if candidate.startswith('//'):
-                candidate = f'{parsed.scheme}:{candidate}'
-            return candidate
+    # 3) Última tentativa: apanhar QUALQUER URL e ver se contém .m3u8
+    urls = re.findall(r'https?://[^\s"\'<>#]+', text)
+    for u in urls:
+        if '.m3u8' in u.lower():
+            # cortar no fim correcto
+            end = u.lower().find('.m3u8') + 5
+            return u[:end]
 
-    # Se nada foi encontrado, procurar em scripts externos referenciados na página
-    # buscar src de scripts e pedir cada um (limitado a 5)
-    script_srcs = []
-    if BeautifulSoup:
-        try:
-            soup = BeautifulSoup(text, 'html.parser')
-            for s in soup.find_all('script', src=True):
-                script_srcs.append(urljoin(url, s['src']))
-        except Exception:
-            script_srcs = []
-    # tentar alguns scripts
-    for s_url in script_srcs[:5]:
-        try:
-            r2 = session.get(s_url, timeout=timeout)
-            link = find_m3u8_in_text(r2.text, base_url=s_url)
-            if link:
-                return link
-        except Exception:
-            continue
-
-    # tudo falhou
     return FALLBACK_M3U
-
 
 def process_input_file(input_path: str, session: requests.Session, output_stream, timeout: int = 15,
                        concurrency: int = 4, show_progress: bool = True) -> None:
