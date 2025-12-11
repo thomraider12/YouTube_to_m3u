@@ -2,7 +2,7 @@
 
 echo $(dirname $0)
 
-python3 -m pip install requests
+python3 -m pip install requests beautifulsoup4 tqdm
 
 cd $(dirname $0)/scripts/
 
