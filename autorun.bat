@@ -1,4 +1,4 @@
-pip install requests
-
+pip install yt-dlp
 cd scripts/
-python youtube_m3ugrabber.py > ../youtube.m3u
+python3 youtube_m3ugrabber.py -i ../youtube_channel_info.txt -o canais.m3u
+
