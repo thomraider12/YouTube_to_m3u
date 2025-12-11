@@ -87,9 +87,10 @@ def extract_stream_with_yt_dlp(url: str, cookiefile: Optional[str] = None, timeo
         "no_warnings": True,
         "skip_download": True,
         "dump_single_json": True,
-        # aumentar o timeout para requests internas
+        "format": "best[ext=m3u8]",
         "socket_timeout": timeout,
     }
+
     if cookiefile:
         # opção correcta para passar ficheiro de cookies
         ydl_opts["cookiefile"] = cookiefile
