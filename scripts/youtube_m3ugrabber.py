@@ -8,7 +8,7 @@ Gera uma playlist M3U a partir de um ficheiro de entrada, escolhendo a melhor qu
 - Suporta cookies passados pela variável de ambiente YT_COOKIES (usado no GitHub Actions).
 
 Uso:
-  python3 youtube_to_m3u_best.py -i ../youtube_channel_info.txt -o canais.m3u
+  python3 youtube_to_m3u_best.py -i ../youtube_channel_info.txt -o ../canais.m3u
 
 """
 from __future__ import annotations
@@ -26,19 +26,7 @@ except Exception:
     print("Erro: yt-dlp não instalado. Faz: pip install yt-dlp", file=sys.stderr)
     raise
 
-BANNER = r'''
-#########################################################################
-#      ____            _           _   __  __                           #
-#     |  _ \ _ __ ___ (_) ___  ___| |_|  \/  | ___   ___  ___  ___      #
-#     | |_) | '__/ _ \| |/ _ \/ __| __| |\/| |/ _ \ / _ \/ __|/ _ \     #
-#     |  __/| | | (_) | |  __/ (__| |_|  |  | | (_) | (_) \__ \  __/     #
-#     |_|   |_|  \___// |\___|\___|\__|_|  |_|\___/ \___/|___/\___|     #
-#                   |__/                                                #
-#                                  >> https://github.com/benmoose39     #
-#########################################################################
-'''
-
-FALLBACK_M3U = "https://raw.githubusercontent.com/benmoose39/YouTube_to_m3u/main/assets/moose_na.m3u"
+FALLBACK_M3U = "https://raw.githubusercontent.com/thomraider12/YouTube_to_m3u/main/assets/offline.mp4"
 
 
 def write_temp_cookies(cookies_text: str) -> Optional[str]:
