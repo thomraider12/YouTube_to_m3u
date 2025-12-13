@@ -2,5 +2,11 @@
 ~~ FORMAT: <channel name> | <group name> | <logo> | <tvg-id>
 
 
-Conta Lá | Generalistas | https://static.wikia.nocookie.net/logopedia/images/8/8f/ContaL%C3%A1_2025.svg/revision/latest?cb=20251206172312 | ContaLa.pt
-https://www.youtube.com/watch?v=3YotInjS45A
+Conta Lá ||| ContaLa.pt
+https://www.youtube.com/@contalapt/live
+
+Golo FMTV ||| GoloFM.tv
+https://www.youtube.com/@GoloFM/live
+
+LiveModeTVPT ||| LiveModeTV.pt
+https://www.youtube.com/@LiveModeTV_PT/live

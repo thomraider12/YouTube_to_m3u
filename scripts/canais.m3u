@@ -1,15 +1,4 @@
-#EXTM3U x-tvg-url="https://github.com/botallen/epg/releases/download/latest/epg.xml"
-
-#########################################################################
-#      ____            _           _   __  __                           #
-#     |  _ \ _ __ ___ (_) ___  ___| |_|  \/  | ___   ___  ___  ___      #
-#     | |_) | '__/ _ \| |/ _ \/ __| __| |\/| |/ _ \ / _ \/ __|/ _ \     #
-#     |  __/| | | (_) | |  __/ (__| |_|  |  | | (_) | (_) \__ \  __/     #
-#     |_|   |_|  \___// |\___|\___|\__|_|  |_|\___/ \___/|___/\___|     #
-#                   |__/                                                #
-#                                  >> https://github.com/benmoose39     #
-#########################################################################
-
+#EXTM3U
 
 #EXTINF:-1 group-title="Generalistas" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/8/8f/ContaL%C3%A1_2025.svg/revision/latest?cb=20251206172312" tvg-id="ContaLa.pt", Conta Lá
 https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1765660461/ei/zYI9aZj8DavGkucPypzUoQI/ip/4.246.135.39/id/3YotInjS45A.1/itag/96/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D137/rqh/1/hls_chunk_host/rr1---sn-p5qlsnrl.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/siu/1/bui/AYUSA3AaouYSsmI5FhP3uIYJS7LGvMNLLPdNdLD7JOdDoQmWLHEHV_AvOXOWCy7UsNMKeVGNjA/spc/wH4Qq_ui9QKEMzNTONi635t5uBR_56-4Mtk_3GXRG2YD3NKplfID/vprv/1/playlist_type/DVR/met/1765638862,/mh/W9/mm/44/mn/sn-p5qlsnrl/ms/lva/mv/u/mvi/1/pl/17/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51355912,51552689,51565115,51565681,51580968/mt/1765637804/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,siu,bui,spc,vprv,playlist_type/sig/AJfQdSswRQIgXjfK80mGJ2Lc65j6ivl9Cbklc2d96tMQ5bxD7kCuR_4CIQCtIDDWb3Gky8OfYFYPG-gK9CEj4qaeBSN0y9KKAGQfNg%3D%3D/lsparams/hls_chunk_host,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwQwIgdDq561BGd3z5fUUy1fSMYPqQBVE0S4QmlICK-QcZjxICH2tt0Bar9z0fv5biJ60CTIPjl_bIwG7hPn8NeN9p0V8%3D/playlist/index.m3u8

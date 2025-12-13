@@ -209,8 +209,7 @@ def process_file(infile: str, outfile, cookiefile: Optional[str]) -> None:
     with open(infile, "r", encoding="utf-8", errors="ignore") as f:
         lines = [ln.rstrip("\n") for ln in f]
 
-    outfile.write('#EXTM3U x-tvg-url="https://github.com/botallen/epg/releases/download/latest/epg.xml"\n')
-    outfile.write(BANNER + "\n")
+    outfile.write('#EXTM3U"\n')
 
     for line in lines:
         line = line.strip()
@@ -224,7 +223,7 @@ def process_file(infile: str, outfile, cookiefile: Optional[str]) -> None:
                 grp_title = parts[1].title()
                 tvg_logo = parts[2]
                 tvg_id = parts[3]
-                outfile.write(f'\n#EXTINF:-1 group-title="{grp_title}" tvg-logo="{tvg_logo}" tvg-id="{tvg_id}", {ch_name}\n')
+                outfile.write(f'\n#EXTINF:-1 group-title="{grp_title}" tvg-logo="{tvg_logo}" tvg-id="{tvg_id}",{ch_name}\n')
                 continue
             else:
                 outfile.write(f'\n# {line}\n')
